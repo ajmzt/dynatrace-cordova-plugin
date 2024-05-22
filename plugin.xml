@@ -6,13 +6,14 @@
     <name>Dynatrace</name>
     <description>Dynatrace Cordova Plugin</description>
 
-    <hook type="after_plugin_add" src="scripts/Install.js"/>
-    <hook type="before_plugin_uninstall" src="scripts/Uninstall.js"/>
-	<hook src="scripts/Outsystems/npmInstall.js" type="before_plugin_install"/>
-	<hook src="scripts/Outsystems/copyConfig.js" type="before_prepare"/>
-	<hook type="after_prepare" src="scripts/Instrument.js"/>
-	<hook type="after_build" src="scripts/CloseLog.js" />
-	<hook type="after_run" src="scripts/CloseLog.js" />
+    <hook src="scripts/pluginAdd.js" type="before_plugin_add"/>
+  <hook src="scripts/Outsystems/npmInstall.js" type="before_plugin_install"/>
+  <hook src="scripts/install.js" type="after_plugin_add"/>
+  <hook src="scripts/uninstall.js" type="before_plugin_rm"/>
+  <hook src="scripts/Outsystems/copyConfig.js" type="before_prepare"/>
+  <hook src="scripts/instrument.js" type="after_prepare"/>
+  <hook src="scripts/close-log.js" type="after_build"/>
+  <hook src="scripts/close-log.js" type="after_run"/>
 
     <js-module src="networking/NativeNetworkInterceptorUtils.js" name="native-network-interceptor-utils" />
     <js-module src="networking/MobileFirstNetworkInterceptor.js" name="mobile-first-network-interceptor" />
